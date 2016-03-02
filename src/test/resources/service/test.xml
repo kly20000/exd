@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services>
+	<service name="sf-order-search"/>
+	<prop name="result" inpath="classpath:service" file="prop.properties" key="result"/>
+	<sql name="queryUserAge">
+		<content><![CDATA[select * from user where id='yangwei']]></content>
+	</sql>
+	<if expression="'yang' == '${result.name}' and ${result.age} @lt 30">
+		<true>
+			<out outpath="d:/temp/resp" file="test.data">
+				<param name="out" value="${queryUserAge}"/>
+			</out>
+		</true>
+	</if>
+</services>

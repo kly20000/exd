@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services>
+	<service name="test">
+		<param name="age" value="10"/>
+		<param name="sex" value="1"/>
+	</service>
+	<prop name="userProp" path="classpath:service" file="prop.properties"/>
+	<sql name="queryUser">
+		<param name="name" ref="userProp.name"/>
+		<content><![CDATA[select * from people where name like '%${name}%' limit 1]]></content>
+	</sql>
+	<sql name="queryUserAge">
+		<content><![CDATA[select * from people where age=${age}]]></content>
+	</sql>
+	<if expressoin="'yang' == ${queryUser.name}">
+		<true>
+			<sql name="updateAge">
+				<param name="name" ref="queryUser" key="name" type="string"/>
+				<param name="age" value="15"/>
+				<content><![CDATA[update people set age=${age} where name in (${name})]]></content>
+			</sql>
+		</true>
+		<!-- false>
+			<sql name="updateSex">
+				<param name="name" ref="queryUser.name"/>
+				<content><![CDATA[update people set sex='2' where name='${name}']]></content>
+			</sql>
+		</false -->
+	</if>
+</services>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services>
+	<sql source="classpath:service/db.sql"/>
+	<prop name="result">
+		<param name="success">
+			{"message":"success"}
+		</param>
+	</prop>
+	<out name="exd_web_out" ref="result.success"/>
+</services>
