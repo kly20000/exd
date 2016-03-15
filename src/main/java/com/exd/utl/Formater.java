@@ -3,11 +3,14 @@ package com.exd.utl;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import net.sf.json.JSON;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.xml.XMLSerializer;
+
+import org.apache.commons.lang.StringUtils;
 
 public class Formater {
 	/**
@@ -35,5 +38,21 @@ public class Formater {
 			jsonArray.add(bean);
 		}
 		return jsonArray.toString();
+	}
+	
+	/**
+	 * Map<String, Object> 转url
+	 * 用于HTTP参数拼接RSA校验
+	 * */
+	public static String map2Url(Object mapObj){
+		Map<String, Object> map = (TreeMap<String, Object>)mapObj;
+		String[] parameters = new String[map.size()];
+		int i=0;
+		for(Iterator<String> it = map.keySet().iterator(); it.hasNext();){
+			String key = it.next();
+			parameters[i] = key+"="+map.get(key);
+			i++;
+		}
+		return StringUtils.join(parameters, "&");
 	}
 }

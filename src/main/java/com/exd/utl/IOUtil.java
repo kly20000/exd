@@ -68,7 +68,7 @@ public class IOUtil {
 			if(!file.getParentFile().exists()){
 				file.getParentFile().mkdir();
 			}
-			FileOutputStream fos = new FileOutputStream(file);
+			FileOutputStream fos = new FileOutputStream(file, true);
 			byte[] data = new byte[512];
 			for(int flag = in.read(data); flag > -1; flag = in.read(data)){
 				fos.write(data,0,flag);

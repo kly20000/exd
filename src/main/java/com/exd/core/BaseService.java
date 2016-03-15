@@ -1,8 +1,8 @@
 package com.exd.core;
 
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -75,10 +75,11 @@ public abstract class BaseService implements Service {
 				paramBean.setValue(parseAttribute(param.getText()));
 			}
 			if(localParam == null){
-				localParam = new LinkedHashMap<String, String>();
+				localParam = new TreeMap<String, String>();
 			}
 			localParam.put(paramBean.getName(), paramBean.getValue());
 			this.getParams().put(paramBean.getScopeName(), paramBean.getValue());
+			this.getParams().put(name+"#localParam", localParam);
 		}
 		return localParam;
 	}

@@ -105,6 +105,7 @@ public class WebHelper {
 		response.setCharacterEncoding("utf-8");
 		// 普通web输出(ajax)
 		if(results.get(WEB_OUT) != null){
+			response.setContentType("text/plain");
 			response.getWriter().print(results.get(WEB_OUT));
 		}
 		// 重定向

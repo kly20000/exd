@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coders>
+	<coder class="com.exd.utl.Formater">
+		<method value="xml2Json"/>
+		<method value="list2Json"/>
+		<method value="map2Url"/>
+	</coder>
+	<coder class="com.exd.utl.Encrypt">
+		<method value="md5"/>
+		<method value="md5ToBase64"/>
+	</coder>
+	<coder class="com.exd.utl.ValueMaker">
+		<method value="uuid"/>
+	</coder>
+</coders>
