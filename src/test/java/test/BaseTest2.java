@@ -6,16 +6,17 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.exd.core.ServiceAnalyzer;
 
-public class BaseTest {
+public class BaseTest2 {
 	@Test
 	public void Test(){
 		ApplicationContext context=new ClassPathXmlApplicationContext("ApplicationContext.xml");
+		/*QuartzAnalyzer sa = (QuartzAnalyzer)context.getBean("quartzAnalyzer");
+		sa.init();*/
 		ServiceAnalyzer sa = (ServiceAnalyzer)context.getBean("analyzerProxy");
-		
-		//sa.analyze("sf-order");
-		//sa.analyze("sf-order-route");
-		//sa.analyze("sf-order-search");
-		sa.analyze("test",null);
-		//sa.analyze("sqlfile");
+		sa.analyze("alipay-query", null);
+	}
+	
+	public static void main(String[] args){
+		ApplicationContext context=new ClassPathXmlApplicationContext("ApplicationContext.xml");
 	}
 }
